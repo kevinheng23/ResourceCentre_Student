@@ -85,46 +85,16 @@ public class ResourceCentreTest {
 	}
 
 	@Test
-	public static boolean doLoanCamcorderTest(ArrayList<Camcorder> camcorderList, String tag, String dueDate) {
+	public void doLoanCamcorderTest() {
 		//fail("Not yet implemented");
 		// write your code here
-		
-		boolean isLoaned = false;
-
-		for (int i = 0; i < camcorderList.size(); i++) {
-			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-					&& camcorderList.get(i).getIsAvailable() == true) {
-				
-				camcorderList.get(i).setIsAvailable(false);
-				camcorderList.get(i).setDueDate(dueDate);
-				
-				isLoaned = true;
-				
-			}
-		}
-		return isLoaned;
-
 		
 	}
 	
 	@Test
-	public static boolean doLoanChromebookTest(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
+	public void doLoanChromebookTest() {
 		//fail("Not yet implemented");
 		// write your code here
-		boolean isLoaned = false;
-		
-		for (int i = 0; i <  chromebookList.size(); i++) {
-			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
-			&& chromebookList.get(i).getIsAvailable() == true ) {
-				
-				chromebookList.get(i).setIsAvailable(false);
-				chromebookList.get(i).setDueDate(dueDate);
-				
-				isLoaned = true;
-				
-			}
-		}
-		return isLoaned;
 	}
 	
 	@Test
