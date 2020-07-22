@@ -116,7 +116,7 @@ public class ResourceCentreTest {
 	public void doLoanCamcorderTest() {
 		//fail("Not yet implemented");
 		// write your code here
-// <<<<<<< HEAD
+		
 		ResourceCentre.viewAllCamcorder(camcorderList);
 		boolean isLoaned = false;
 		String tag = Helper.readString("Enter Asset Tag > ");
@@ -132,19 +132,19 @@ public class ResourceCentreTest {
 		}
 		if (isLoaned == false) {
 			System.out.println("Invalid asset tag");
-		} else {
+		} 
+		else {
 			System.out.println("Camcorder " + tag + " loaned out");
 		}
 
 	}
-// >>>>>>> branch 'master' of https://github.com/kevinheng23/ResourceCentre_Student
+
 	
 	
 	@Test
 	public void doLoanChromebookTest() {
 		//fail("Not yet implemented");
 		// write your code here
-// <<<<<<< HEAD
 		boolean isLoaned = false;
 		String tag = Helper.readString("Enter Asset Tag > ");
 		String due = Helper.readString("Enter due date > ");
@@ -164,8 +164,7 @@ public class ResourceCentreTest {
 			System.out.println("Chromebook " + tag + " loaned out");
 			}
 }
-// =======
-// >>>>>>> branch 'master' of https://github.com/kevinheng23/ResourceCentre_Student
+
 
 	
 	@Test
