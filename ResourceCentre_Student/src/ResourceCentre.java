@@ -213,12 +213,13 @@ public class ResourceCentre {
 		System.out.println("Camcorder added");
 	}
 	
-	public static Chromebook inputChromebook() {	
+	public static Chromebook inputChromebook() {
+		Chromebook cb = null;
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
 		String os = Helper.readString("Enter os > ");
 		
-		Chromebook cb = new Chromebook(tag, description, os);
+		cb = new Chromebook(tag, description, os);
 		return cb;
 		
 	}	
