@@ -101,10 +101,15 @@ public class ResourceCentreTest {
 	public void doReturnCamcorderTest() {
 		//fail("Not yet implemented");
 		// write your code here
-		ResourceCentre.viewAllCamcorder(camcorderList);
+		//boundary 
+		assertNotNull("Check if there is any valid Camcorder arraylist to return to", chromebookList);
+		ResourceCentre.returnCamcorder(camcorderList);
+		
+		//error
 		String tag = Helper.readString("Enter asset tag > ");
 		boolean isReturned = false;
 
+		//normal
 		for (int i = 0; i < camcorderList.size(); i++) {
 			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
 					&& camcorderList.get(i).getIsAvailable() == false) {
@@ -113,29 +118,30 @@ public class ResourceCentreTest {
 				System.out.println("Camcorder " + tag + " returned");
 			}
 		}
-		if (isReturned == false) {
-			System.out.println("Invalid assest tag");
+		//error
+	    assertFalse("Check if there is any invalid Camcorder arraylist to return?- false?", isReturned);
 		}
-	}
+	
 	@Test
 	public void doReturnChromebookTest() {
 		//fail("Not yet implemented");
 		// write your code here
+		assertNotNull("Check if there is any valid chromebook arraylist to return to", chromebookList);
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		
+		//error
+		boolean isReturned = ResourceCentre.doReturnChromebook (chromebookList, "CB001");
+        assertFalse("Check that available chromebook CB001is returned- false?", isReturned);
+		
+        //normal
+    	ResourceCentre.addChromebook(chromebookList, cb2);
+    	cb2.setIsAvailable(false);
+    	isReturned = ResourceCentre.doReturnChromebook (chromebookList, "CB002");
+		
+    	//error
+    	isReturned = ResourceCentre.doReturnChromebook (chromebookList, "CB003");
+    	assertFalse("Check that available chromebook CB003 is returned- false?", isReturned);
 		ResourceCentre.viewAllChromebook(chromebookList);
-		String tag = Helper.readString("Enter asset tag > ");
-		boolean isReturned = false;
-
-		for (int i = 0; i < chromebookList.size(); i++) {
-			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
-					&& chromebookList.get(i).getIsAvailable() == false) {
-				chromebookList.get(i).setIsAvailable(true);
-				chromebookList.get(i).setDueDate("");
-				System.out.println("Camcorder " + tag + " returned");
-			}
-		}
-		if (isReturned == false) {
-			System.out.println("Invalid assest tag");
-		}
 	}
 	
 	@After
