@@ -114,7 +114,6 @@ public class ResourceCentreTest {
 		for (int i = 0; i <  camcorderList.size(); i++) {
 			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
 			&& camcorderList.get(i).getIsAvailable() == true ) {
-				
 				camcorderList.get(i).setIsAvailable(false);
 				camcorderList.get(i).setDueDate(due);
 				
@@ -141,7 +140,6 @@ public class ResourceCentreTest {
 		for (int i = 0; i <  chromebookList.size(); i++) {
 			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
 			&& chromebookList.get(i).getIsAvailable() == true ) {
-				
 				chromebookList.get(i).setIsAvailable(false);
 				chromebookList.get(i).setDueDate(due);
 				
