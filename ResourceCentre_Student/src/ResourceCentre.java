@@ -86,14 +86,38 @@ public class ResourceCentre {
 
 					// Return camcorder
 					ResourceCentre.returnCamcorder(camcorderList);
+					String type = Helper.readString("Enter type > ");
+					boolean isReturned = false;
 
+					for (int i = 0; i < camcorderList.size(); i++) {
+						if (type.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
+								&& camcorderList.get(i).getIsAvailable() == false) {
+							camcorderList.get(i).setIsAvailable(true);
+							camcorderList.get(i).setDueDate("");
+							System.out.println("Camcorder " + type + " returned");
+						}
+					}
+					if (isReturned == false) {
+						System.out.println("Invalid type");
+					}
 				} else if (itemType == 2) {
 
 					// Return Chromebook
 					ResourceCentre.returnChromebook(chromebookList);
+					String type = Helper.readString("Enter type > ");
+					boolean isReturned = false;
 
-				} else {
-					System.out.println("Invalid type");
+					for (int i = 0; i < chromebookList.size(); i++) {
+						if (type.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
+								&& chromebookList.get(i).getIsAvailable() == false) {
+							chromebookList.get(i).setIsAvailable(true);
+							chromebookList.get(i).setDueDate("");
+							System.out.println("Camcorder " + type + " returned");
+						}
+					}
+					if (isReturned == false) {
+						System.out.println("Invalid type");
+		
 				}
 
 			} else if (option == 5) {
@@ -101,7 +125,7 @@ public class ResourceCentre {
 			} else {
 				System.out.println("Invalid option");
 			}
-
+			}
 		}
 
 	}
@@ -190,7 +214,6 @@ public class ResourceCentre {
 	}
 	
 	public static Chromebook inputChromebook() {	
-		// write your code here
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
 		String os = Helper.readString("Enter os > ");
@@ -201,7 +224,6 @@ public class ResourceCentre {
 	}	
 	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
 
-		// write your code here
 		chromebookList.add(cb);
 		System.out.println("Chromebook added");
 	}
