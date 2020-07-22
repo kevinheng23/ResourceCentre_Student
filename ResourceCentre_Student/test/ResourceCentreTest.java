@@ -117,25 +117,27 @@ public class ResourceCentreTest {
 		//fail("Not yet implemented");
 		// write your code here
 		
+		// boundary
+		assertNotNull("Check if there is a valid camcorder arraylist to view", camcorderList);
 		ResourceCentre.viewAllCamcorder(camcorderList);
-		boolean isLoaned = false;
-		String tag = Helper.readString("Enter Asset Tag > ");
-		String due = Helper.readString("Enter due date > ");
 		
-		for (int i = 0; i <  camcorderList.size(); i++) {
-			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-			&& camcorderList.get(i).getIsAvailable() == true ) {
-				camcorderList.get(i).setIsAvailable(false);
-				camcorderList.get(i).setDueDate(due);
-				isLoaned = true;
-			}
-		}
-		if (isLoaned == false) {
-			System.out.println("Invalid asset tag");
-		} 
-		else {
-			System.out.println("Camcorder " + tag + " loaned out");
-		}
+		// normal
+		ResourceCentre.addCamcorder(camcorderList, cc1);
+		cc1.getIsAvailable();
+		boolean isLoaned = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", null);
+		assertTrue("Check if the available camcorder CC0011 can be loaned out - true?",isLoaned);
+		
+		//error
+		ResourceCentre.addCamcorder(camcorderList, cc2);
+		cc2.setIsAvailable(false);
+		isLoaned = ResourceCentre.doLoanCamcorder(camcorderList, "CC0022", "23rd July 2020");
+		assertFalse("Check if the loaned out camcorder CC0022 can be loaned out again - false?", isLoaned);
+		
+		// error
+		isLoaned = ResourceCentre.doLoanCamcorder(camcorderList, "CC0033", null);
+		assertFalse("Check if the none existing camcorder CC0033 can be loaned out - false?", isLoaned);
+		
+		
 
 	}
 
@@ -145,24 +147,28 @@ public class ResourceCentreTest {
 	public void doLoanChromebookTest() {
 		//fail("Not yet implemented");
 		// write your code here
-		boolean isLoaned = false;
-		String tag = Helper.readString("Enter Asset Tag > ");
-		String due = Helper.readString("Enter due date > ");
+		// boundary
+		assertNotNull("Check if there is a valid camcorder arraylist to view", chromebookList);
+		ResourceCentre.viewAllChromebook(chromebookList);
 		
-		for (int i = 0; i <  chromebookList.size(); i++) {
-			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
-			&& chromebookList.get(i).getIsAvailable() == true ) {
-				chromebookList.get(i).setIsAvailable(false);
-				chromebookList.get(i).setDueDate(due);
-				isLoaned = true;
-			}
-		}
-		if (isLoaned == false) {
-			System.out.println("Invalid asset tag");
-		} 
-		else {
-			System.out.println("Chromebook " + tag + " loaned out");
-			}
+		// normal
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		cb1.getIsAvailable();
+		boolean isLoaned = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", null);
+		assertTrue("Check if the available chromebook CB0011 can be loaned out - true?",isLoaned);
+		
+		//error
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		cb2.setIsAvailable(false);
+		isLoaned = ResourceCentre.doLoanChromebook(chromebookList, "CB0022", "23rd July 2020");
+		assertFalse("Check if the loaned out chromebook CB0022 can be loaned out again - false?", isLoaned);
+		
+		// error
+		isLoaned = ResourceCentre.doLoanChromebook(chromebookList, "CC0033", null);
+		assertFalse("Check if the none existing chromebook CB0033 can be loaned out - false?", isLoaned);
+		
+		
+
 }
 
 
