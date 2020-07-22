@@ -86,38 +86,14 @@ public class ResourceCentre {
 
 					// Return camcorder
 					ResourceCentre.returnCamcorder(camcorderList);
-					String type = Helper.readString("Enter type > ");
-					boolean isReturned = false;
 
-					for (int i = 0; i < camcorderList.size(); i++) {
-						if (type.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-								&& camcorderList.get(i).getIsAvailable() == false) {
-							camcorderList.get(i).setIsAvailable(true);
-							camcorderList.get(i).setDueDate("");
-							System.out.println("Camcorder " + type + " returned");
-						}
-					}
-					if (isReturned == false) {
-						System.out.println("Invalid type");
-					}
 				} else if (itemType == 2) {
 
 					// Return Chromebook
 					ResourceCentre.returnChromebook(chromebookList);
-					String type = Helper.readString("Enter type > ");
-					boolean isReturned = false;
 
-					for (int i = 0; i < chromebookList.size(); i++) {
-						if (type.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
-								&& chromebookList.get(i).getIsAvailable() == false) {
-							chromebookList.get(i).setIsAvailable(true);
-							chromebookList.get(i).setDueDate("");
-							System.out.println("Camcorder " + type + " returned");
-						}
-					}
-					if (isReturned == false) {
-						System.out.println("Invalid type");
-		
+				} else {
+					System.out.println("Invalid type");
 				}
 
 			} else if (option == 5) {
@@ -125,7 +101,7 @@ public class ResourceCentre {
 			} else {
 				System.out.println("Invalid option");
 			}
-			}
+
 		}
 
 	}
@@ -301,7 +277,6 @@ public class ResourceCentre {
 				camcorderList.get(i).setIsAvailable(true);
 				camcorderList.get(i).setDueDate("");
 				isReturned = true;
-				
 			}
 		}
 		return isReturned;
@@ -318,15 +293,25 @@ public class ResourceCentre {
 			System.out.println("Camcorder " + tag + " returned");
 		}
 	}
-
 	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList,String tag){
+		ResourceCentre.viewAllChromebook(chromebookList);
+		String type = Helper.readString("Enter asset tag > ");
 		boolean isReturned = false;
 		// write your code here
+		for (int i = 0; i < chromebookList.size(); i++) {
+			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
+					&& chromebookList.get(i).getIsAvailable() == false) {
+				chromebookList.get(i).setIsAvailable(true);
+				chromebookList.get(i).setDueDate("");
+				System.out.println("Camcorder " + tag + " returned");
+			}
+		}
+		if (isReturned == false) {
+			System.out.println("Invalid assest tag");
+		}
 		return isReturned;
 	}
 	public static void returnChromebook(ArrayList<Chromebook> chromebookList) {
 		// write your code here
 	}
-
-
 }
