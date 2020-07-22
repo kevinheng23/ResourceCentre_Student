@@ -277,7 +277,6 @@ public class ResourceCentre {
 				camcorderList.get(i).setIsAvailable(true);
 				camcorderList.get(i).setDueDate("");
 				isReturned = true;
-				
 			}
 		}
 		return isReturned;
