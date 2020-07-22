@@ -107,16 +107,16 @@ public class ResourceCentreTest {
 	public void doLoanCamcorderTest() {
 		//fail("Not yet implemented");
 		// write your code here
+		ResourceCentre.viewAllCamcorder(camcorderList);
+		boolean isLoaned = false;
 		String tag = Helper.readString("Enter Asset Tag > ");
 		String due = Helper.readString("Enter due date > ");
-		boolean isLoaned = false;
 		
 		for (int i = 0; i <  camcorderList.size(); i++) {
 			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
 			&& camcorderList.get(i).getIsAvailable() == true ) {
 				camcorderList.get(i).setIsAvailable(false);
 				camcorderList.get(i).setDueDate(due);
-				
 				isLoaned = true;
 			}
 		}
@@ -125,7 +125,6 @@ public class ResourceCentreTest {
 		} else {
 			System.out.println("Camcorder " + tag + " loaned out");
 		}
-		
 	}
 
 	
@@ -133,23 +132,22 @@ public class ResourceCentreTest {
 	public void doLoanChromebookTest() {
 		//fail("Not yet implemented");
 		// write your code here
+		boolean isLoaned = false;
 		String tag = Helper.readString("Enter Asset Tag > ");
 		String due = Helper.readString("Enter due date > ");
-		boolean isLoaned = false;
 		
 		for (int i = 0; i <  chromebookList.size(); i++) {
 			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
 			&& chromebookList.get(i).getIsAvailable() == true ) {
 				chromebookList.get(i).setIsAvailable(false);
 				chromebookList.get(i).setDueDate(due);
-				
 				isLoaned = true;
 			}
 		}
 		if (isLoaned == false) {
 			System.out.println("Invalid asset tag");
 		} else {
-			System.out.println("Chromebook  " + tag + " loaned out");
+			System.out.println("Chromebook " + tag + " loaned out");
 		}
 		
 	}
