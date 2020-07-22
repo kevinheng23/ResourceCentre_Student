@@ -101,26 +101,28 @@ public class ResourceCentreTest {
 	public void doReturnCamcorderTest() {
 		//fail("Not yet implemented");
 		// write your code here
-		String tag = Helper.readString("Enter asset tag > ");
-		boolean isReturned = false;
+			ResourceCentre.viewAllCamcorder(camcorderList);
+			String tag = Helper.readString("Enter asset tag > ");
+			boolean isReturned = false;
 
-		for (int i = 0; i < camcorderList.size(); i++) {
-			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-					&& camcorderList.get(i).getIsAvailable() == false) {
-				camcorderList.get(i).setIsAvailable(true);
-				camcorderList.get(i).setDueDate("");
-				System.out.println("Camcorder " + tag + " returned");
+			for (int i = 0; i < camcorderList.size(); i++) {
+				if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
+						&& camcorderList.get(i).getIsAvailable() == false) {
+					camcorderList.get(i).setIsAvailable(true);
+					camcorderList.get(i).setDueDate("");
+					System.out.println("Camcorder " + tag + " returned");
+				}
+			}
+			if (isReturned == false) {
+				System.out.println("Invalid assest tag");
 			}
 		}
-		if (isReturned == false) {
-			System.out.println("Invalid assest tag");
-		}
-		
-	}
+
 	@Test
 	public void doReturnChromebookTest() {
 		//fail("Not yet implemented");
 		// write your code here
+		ResourceCentre.viewAllChromebook(chromebookList);
 		String tag = Helper.readString("Enter asset tag > ");
 		boolean isReturned = false;
 
@@ -136,7 +138,7 @@ public class ResourceCentreTest {
 			System.out.println("Invalid assest tag");
 		}
 	}
-
+	
 	@After
 	public void tearDown() throws Exception {
 		cc1 = null;
@@ -147,4 +149,5 @@ public class ResourceCentreTest {
 		chromebookList = null;
 
 	}
+
 }
