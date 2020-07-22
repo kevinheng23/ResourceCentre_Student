@@ -108,23 +108,25 @@ public class ResourceCentreTest {
 		//fail("Not yet implemented");
 		// write your code here
 	}
-	private static void returnChromebook(ArrayList<Chromebook> chromebookList) {
-		ResourceCentre.viewAllChromebook(chromebookList);
-		String tag = Helper.readString("Enter asset tag > ");
-		boolean isReturned = false;
+		private static void returnChromebook(ArrayList<Chromebook> chromebookList) {
+			ResourceCentre.viewAllChromebook(chromebookList);
+			String tag = Helper.readString("Enter asset tag > ");
+			boolean isReturned = false;
 
-		for (int i = 0; i < chromebookList.size(); i++) {
-			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
-					&& chromebookList.get(i).getIsAvailable() == false) {
-				chromebookList.get(i).setIsAvailable(true);
-				chromebookList.get(i).setDueDate("");
-				System.out.println("Camcorder " + tag + " returned");
+			for (int i = 0; i < chromebookList.size(); i++) {
+				if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
+						&& chromebookList.get(i).getIsAvailable() == false) {
+					chromebookList.get(i).setIsAvailable(true);
+					chromebookList.get(i).setDueDate("");
+					System.out.println("Camcorder " + tag + " returned");
+				}
 			}
-		}
-		if (isReturned == false) {
-			System.out.println("Invalid assest tag");
-		}
-		}
+			
+			if (isReturned == false) {
+				System.out.println("Invalid assest tag");
+			}
+	}
+
 	@After
 	public void tearDown() throws Exception {
 		cc1 = null;
